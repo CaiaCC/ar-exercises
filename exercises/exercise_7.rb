@@ -27,9 +27,13 @@ puts "----------"
 #   end
 # end
 
-print "Input a store name"
-print ">"
+puts "Input a store name"
+
 new_store_name = gets.chomp
 new_store = Store.create(name: new_store_name )
-new_store.valid?
-puts new_store.errors.messages
+
+if new_store.valid? == false
+  puts "---------------"
+  puts "It's not a valid input, see the errors below"
+  new_store.errors.messages.each{|hash| puts "#{hash}"}
+end
