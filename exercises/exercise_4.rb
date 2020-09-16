@@ -31,6 +31,7 @@ store_yaletown = Store.create(
 
 @mens_stores.each{|store| puts "Store name: #{store.name}, Annual revenue: #{store.annual_revenue}"}
 
-@womens_stores = Store.where(womens_apparel: true).having("annual_revenue < ?", 1000000).order(annual_revenue: :desc)
+# @womens_stores = Store.where(womens_apparel: true).having("annual_revenue < ?", 1000000).order(annual_revenue: :desc)
+@womens_stores = Store.where("womens_apparel = true AND annual_revenue <= 1000000").order(annual_revenue: :desc)
 
 
